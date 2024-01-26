@@ -3,17 +3,20 @@
 namespace App\Providers;
 
 // CONTRACTS
-// use App\Contracts\RoleContract;
+use App\Contracts\AboutContract;
+use App\Contracts\PortfolioContract;
 
 // REPOSITORY
-// use App\Repositories\RoleRepository;
+use App\Repositories\AboutRepository;
+use App\Repositories\PortfolioRepository;
 
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
     protected $repositories = [
-        // RoleContract::class => RoleRepository::class,
+        AboutContract::class => AboutRepository::class,
+        PortfolioContract::class => PortfolioRepository::class,
     ];
 
     /**

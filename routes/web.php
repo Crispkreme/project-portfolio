@@ -1,15 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Home\AboutController;
-use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\BlogController;
-use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\ContactController;
+use App\Http\Controllers\Home\FooterController;
+use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\PortfolioController;
+use App\Http\Controllers\MainController;
+use Illuminate\Support\Facades\Route;
+
 
 // Admin All Route 
 Route::middleware(['auth'])->group(function () {
@@ -24,8 +26,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::controller(DemoController::class)->group(function () {
-    Route::get('/', 'HomeMain')->name('home');
-    Route::get('/about', 'Index')->name('about.page')->middleware('check');
+    // Route::get('/', 'HomeMain')->name('home');
+    // Route::get('/about', 'Index')->name('about.page')->middleware('check');
     Route::get('/contact', 'ContactMethod')->name('cotact.page');
 });
 
@@ -39,7 +41,7 @@ Route::controller(HomeSliderController::class)->group(function () {
 Route::controller(AboutController::class)->group(function () {
     Route::get('/about/page', 'AboutPage')->name('about.page');
     Route::post('/update/about', 'UpdateAbout')->name('update.about');
-    Route::get('/about', 'HomeAbout')->name('home.about');
+    // Route::get('/about', 'HomeAbout')->name('home.about');
     Route::get('/about/multi/image', 'AboutMultiImage')->name('about.multi.image');
     Route::post('/store/multi/image', 'StoreMultiImage')->name('store.multi.image');
     Route::get('/all/multi/image', 'AllMultiImage')->name('all.multi.image');
@@ -57,7 +59,7 @@ Route::controller(PortfolioController::class)->group(function () {
     Route::post('/update/portfolio', 'UpdatePortfolio')->name('update.protfolio');
     Route::get('/delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
     Route::get('/portfolio/details/{id}', 'PortfolioDetails')->name('portfolio.details');
-    Route::get('/portfolio', 'HomePortfolio')->name('home.portfolio');
+    // Route::get('/portfolio', 'HomePortfolio')->name('home.portfolio');
 });
  
 // Blog Category All Routes 
@@ -96,6 +98,14 @@ Route::controller(ContactController::class)->group(function () {
     Route::get('/contact/message', 'ContactMessage')->name('contact.message');   
     Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');  
 });
+
+Route::controller(MainController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/about', 'about')->name('about');
+    Route::get('/service', 'service')->name('service');
+    Route::get('/portfolio', 'portfolio')->name('portfolio');
+});
+
 
 Route::get('/dashboard', function () {
     return view('admin.index');
