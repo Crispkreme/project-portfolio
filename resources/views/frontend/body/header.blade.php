@@ -12,10 +12,7 @@
                         <nav class="menu__nav">
                             <div class="logo">
                                 <a href="index.html" class="logo__black">
-                                    <img src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt="">
-                                </a>
-                                <a href="index.html" class="logo__white">
-                                    <img src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt="">
+                                    <img src="{{ Storage::url('upload/logo/logo1.png') }}" alt="">
                                 </a>
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
@@ -32,11 +29,11 @@
                                     <li class="{{ $route == 'portfolio' ? 'active' : '' }}">
                                         <a href="{{ route('portfolio') }}">Portfolio</a>
                                     </li>
-                                    <li class="{{ $route == 'home.blog' ? 'active' : '' }}">
-                                        <a href="{{ route('home.blog') }}">Our Blog</a>
+                                    <li class="{{ $route == 'blog' ? 'active' : '' }}">
+                                        <a href="{{ route('blog') }}">Our Blog</a>
                                     </li>
-                                    <li class="{{ $route == 'contact.me' ? 'active' : '' }}">
-                                        <a href="{{ route('contact.me') }}">contact me</a>
+                                    <li class="{{ $route == 'contact' ? 'active' : '' }}">
+                                        <a href="{{ route('contact') }}">contact me</a>
                                     </li>
                                 </ul>
                             </div>

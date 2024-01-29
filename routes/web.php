@@ -82,7 +82,7 @@ Route::controller(BlogController::class)->group(function () {
     Route::get('/delete/blog/{id}', 'DeleteBlog')->name('delete.blog');
     Route::get('/blog/details/{id}', 'BlogDetails')->name('blog.details');
     Route::get('/category/blog/{id}', 'CategoryBlog')->name('category.blog'); 
-    Route::get('/blog', 'HomeBlog')->name('home.blog'); 
+    // Route::get('/blog', 'HomeBlog')->name('home.blog'); 
 });
 
 // Footer All Route 
@@ -93,8 +93,8 @@ Route::controller(FooterController::class)->group(function () {
 
 // Contact All Route 
 Route::controller(ContactController::class)->group(function () {
-    Route::get('/contact', 'Contact')->name('contact.me');
-    Route::post('/store/message', 'StoreMessage')->name('store.message');
+    // Route::get('/contact', 'Contact')->name('contact.me');
+    
     Route::get('/contact/message', 'ContactMessage')->name('contact.message');   
     Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');  
 });
@@ -104,6 +104,11 @@ Route::controller(MainController::class)->group(function () {
     Route::get('/about', 'about')->name('about');
     Route::get('/service', 'service')->name('service');
     Route::get('/portfolio', 'portfolio')->name('portfolio');
+    Route::get('/blog', 'blog')->name('blog');
+
+    // CONTACT FUNCTIONALITY
+    Route::get('/contact', 'contact')->name('contact');
+    Route::post('/store/message', 'storeMessage')->name('store.message');
 });
 
 

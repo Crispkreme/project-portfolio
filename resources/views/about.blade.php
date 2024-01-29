@@ -82,6 +82,11 @@
                                     aria-selected="false">awards</button>
                             </li>
                             <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="certificates-tab" data-bs-toggle="tab" data-bs-target="#certificates"
+                                    type="button" role="tab" aria-controls="certificates"
+                                    aria-selected="false">certificate</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="education-tab" data-bs-toggle="tab"
                                     data-bs-target="#education" type="button" role="tab" aria-controls="education"
                                     aria-selected="false">education</button>
@@ -90,13 +95,11 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="about" role="tabpanel"
                                 aria-labelledby="about-tab">
-                                <p class="desc">
+                                    <p class="desc">
 
-                                    {!! $aboutpage->long_description !!}
+                                        {!! $aboutpage->long_description !!}
 
-                                </p>
-                                </li>
-                                </ul>
+                                    </p>
                             </div>
                             <div class="tab-pane fade" id="skills" role="tabpanel" aria-labelledby="skills-tab">
                                 <div class="about__skill__wrap">
@@ -107,7 +110,8 @@
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" style="width: 70%;"
                                                         aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="percentage">70%</span></div>
+                                                        <span class="percentage">70%</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -117,7 +121,8 @@
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" style="width: 90%;"
                                                         aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="percentage">90%</span></div>
+                                                        <span class="percentage">90%</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,7 +132,8 @@
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" style="width: 50%;"
                                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="percentage">50%</span></div>
+                                                        <span class="percentage">50%</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -137,7 +143,8 @@
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" style="width: 65%;"
                                                         aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="percentage">65%</span></div>
+                                                        <span class="percentage">65%</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +154,8 @@
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" style="width: 80%;"
                                                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="percentage">80%</span></div>
+                                                        <span class="percentage">80%</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -157,7 +165,8 @@
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" style="width: 45%;"
                                                         aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="percentage">45%</span></div>
+                                                        <span class="percentage">45%</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,7 +176,8 @@
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" style="width: 55%;"
                                                         aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="percentage">55%</span></div>
+                                                        <span class="percentage">55%</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -177,7 +187,8 @@
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" style="width: 85%;"
                                                         aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="percentage">85%</span></div>
+                                                        <span class="percentage">85%</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -185,6 +196,64 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="awards" role="tabpanel" aria-labelledby="awards-tab">
+                                <div class="about__award__wrap">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-6 col-sm-9">
+                                            <div class="about__award__item">
+                                                <div class="award__logo">
+                                                    <img src="assets/img/images/awards_01.png" alt="">
+                                                </div>
+                                                <div class="award__content">
+                                                    <h5 class="title">Best ux designer award in 2002</h5>
+                                                    <p>There are many variations of passages of Lorem Ipsum available,
+                                                        but the majority have suffered alteration in some form, by
+                                                        injected humour,</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-9">
+                                            <div class="about__award__item">
+                                                <div class="award__logo">
+                                                    <img src="assets/img/images/awards_02.png" alt="">
+                                                </div>
+                                                <div class="award__content">
+                                                    <h5 class="title">BBA final examination 2001</h5>
+                                                    <p>There are many variations of passages of Lorem Ipsum available,
+                                                        but the majority have suffered alteration in some form, by
+                                                        injected humour,</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-9">
+                                            <div class="about__award__item">
+                                                <div class="award__logo">
+                                                    <img src="assets/img/images/awards_03.png" alt="">
+                                                </div>
+                                                <div class="award__content">
+                                                    <h5 class="title">User research award 2020</h5>
+                                                    <p>There are many variations of passages of Lorem Ipsum available,
+                                                        but the majority have suffered alteration in some form, by
+                                                        injected humour,</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-9">
+                                            <div class="about__award__item">
+                                                <div class="award__logo">
+                                                    <img src="assets/img/images/awards_04.png" alt="">
+                                                </div>
+                                                <div class="award__content">
+                                                    <h5 class="title">Dsigning award 2021</h5>
+                                                    <p>There are many variations of passages of Lorem Ipsum available,
+                                                        but the majority have suffered alteration in some form, by
+                                                        injected humour,</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="certificates" role="tabpanel" aria-labelledby="certificates-tab">
                                 <div class="about__award__wrap">
                                     <div class="row justify-content-center">
                                         <div class="col-md-6 col-sm-9">
@@ -554,7 +623,7 @@
     <!-- blog-area-end -->
 
     <!-- contact-area -->
-    <section class="homeContact">
+    <section class="homeContact homeContact__style__two">
         <div class="container">
             <div class="homeContact__wrap">
                 <div class="row">
@@ -566,15 +635,16 @@
                         <div class="homeContact__content">
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have
                                 suffered alteration in some form</p>
-                            <h2 class="mail"><a href="mailto:Info@webmail.com">Info@webmail.com</a></h2>
+                            <h2 class="mail"><a href="mailto:{{ $details->email_address }}">{{ $details->email_address }}</a></h2>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="homeContact__form">
-                            <form action="#">
-                                <input type="text" placeholder="Enter name*">
-                                <input type="email" placeholder="Enter mail*">
-                                <input type="number" placeholder="Enter number*">
+                            <form method="post" action="{{ route('store.message') }}">
+                                @csrf
+                                <input name="name" type="text" placeholder="Enter name*">
+                                <input name="email" type="email" placeholder="Enter mail*">
+                                <input name="phone" type="number" placeholder="Enter number*">
                                 <textarea name="message" placeholder="Enter Massage*"></textarea>
                                 <button type="submit">Send Message</button>
                             </form>
