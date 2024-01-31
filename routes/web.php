@@ -14,26 +14,15 @@ use Illuminate\Support\Facades\Route;
 
 
 // Admin All Route 
-Route::middleware(['auth'])->group(function () {
-    Route::controller(AdminController::class)->group(function () {
-        Route::get('/admin/logout', 'destroy')->name('admin.logout');
-        Route::get('/admin/profile', 'Profile')->name('admin.profile');
-        Route::get('/edit/profile', 'EditProfile')->name('edit.profile');
-        Route::post('/store/profile', 'StoreProfile')->name('store.profile');
-        Route::get('/change/password', 'ChangePassword')->name('change.password');
-        Route::post('/update/password', 'UpdatePassword')->name('update.password'); 
-    });
-});
+
 
 Route::controller(DemoController::class)->group(function () {
-    // Route::get('/', 'HomeMain')->name('home');
-    // Route::get('/about', 'Index')->name('about.page')->middleware('check');
     Route::get('/contact', 'ContactMethod')->name('cotact.page');
 });
 
 // Home Slide All Route 
 Route::controller(HomeSliderController::class)->group(function () {
-    Route::get('/home/slide', 'HomeSlider')->name('home.slide');
+    
     Route::post('/update/slider', 'UpdateSlider')->name('update.slider');  
 });
 
@@ -41,7 +30,6 @@ Route::controller(HomeSliderController::class)->group(function () {
 Route::controller(AboutController::class)->group(function () {
     Route::get('/about/page', 'AboutPage')->name('about.page');
     Route::post('/update/about', 'UpdateAbout')->name('update.about');
-    // Route::get('/about', 'HomeAbout')->name('home.about');
     Route::get('/about/multi/image', 'AboutMultiImage')->name('about.multi.image');
     Route::post('/store/multi/image', 'StoreMultiImage')->name('store.multi.image');
     Route::get('/all/multi/image', 'AllMultiImage')->name('all.multi.image');
@@ -59,7 +47,6 @@ Route::controller(PortfolioController::class)->group(function () {
     Route::post('/update/portfolio', 'UpdatePortfolio')->name('update.protfolio');
     Route::get('/delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
     Route::get('/portfolio/details/{id}', 'PortfolioDetails')->name('portfolio.details');
-    // Route::get('/portfolio', 'HomePortfolio')->name('home.portfolio');
 });
  
 // Blog Category All Routes 
@@ -82,7 +69,6 @@ Route::controller(BlogController::class)->group(function () {
     Route::get('/delete/blog/{id}', 'DeleteBlog')->name('delete.blog');
     Route::get('/blog/details/{id}', 'BlogDetails')->name('blog.details');
     Route::get('/category/blog/{id}', 'CategoryBlog')->name('category.blog'); 
-    // Route::get('/blog', 'HomeBlog')->name('home.blog'); 
 });
 
 // Footer All Route 
@@ -93,8 +79,6 @@ Route::controller(FooterController::class)->group(function () {
 
 // Contact All Route 
 Route::controller(ContactController::class)->group(function () {
-    // Route::get('/contact', 'Contact')->name('contact.me');
-    
     Route::get('/contact/message', 'ContactMessage')->name('contact.message');   
     Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');  
 });
@@ -109,6 +93,33 @@ Route::controller(MainController::class)->group(function () {
     // CONTACT FUNCTIONALITY
     Route::get('/contact', 'contact')->name('contact');
     Route::post('/store/message', 'storeMessage')->name('store.message');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/login', 'login')->name('login');
+        
+        Route::get('/admin/logout', 'destroy')->name('admin.logout');
+        Route::get('/admin/profile', 'Profile')->name('admin.profile');
+        Route::get('/edit/profile', 'EditProfile')->name('edit.profile');
+        Route::post('/store/profile', 'StoreProfile')->name('store.profile');
+        Route::get('/change/password', 'ChangePassword')->name('change.password');
+        Route::post('/update/password', 'UpdatePassword')->name('update.password'); 
+    });
+});
+
+Route::controller(AdminController::class)->group(function () {
+
+    // SLIDER FUNCTIONALITY
+    Route::get('/home/slider', 'slider')->name('slider');
+    Route::get('/home/slider/create', 'createSlider')->name('create.slider');
+    Route::get('/home/slider/update/active/status/{id}', 'updateActiveStatusSlider')->name('slider.update.active.status');
+    Route::get('/home/slider/update/inactive/status/{id}', 'updateInactiveStatusSlider')->name('slider.update.inactive.status');
+    Route::get('/home/slider/update/active/display/{id}', 'updateActiveDisplaySlider')->name('slider.update.active.display');
+    Route::get('/home/slider/update/inactive/display/{id}', 'updateInactiveDisplaySlider')->name('slider.update.inactive.display');
+    Route::post('/home/slider/store', 'storeSlider')->name('store.slider');
+    Route::get('/home/slider/edit/{id}', 'editSlider')->name('edit.slider');
+    Route::post('/home/slider/update/{id}', 'updateSlider')->name('update.slider');
 });
 
 

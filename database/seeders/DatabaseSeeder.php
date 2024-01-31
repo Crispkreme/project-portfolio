@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PortfolioTypeSeeder::class);
         $this->call(PortfolioSeeder::class);
         $this->call(ContactDetailSeeder::class);
+        $this->call(SliderSeeder::class);
     }
 }

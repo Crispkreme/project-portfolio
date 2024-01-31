@@ -52,8 +52,7 @@
         
         <div class="main-content">
 
-            @yield('admin')
-            <!-- End Page-content -->
+            {{ $slot }}
 
             @include('admin.body.footer')
 

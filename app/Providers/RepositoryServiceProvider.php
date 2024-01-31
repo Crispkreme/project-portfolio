@@ -9,6 +9,7 @@ use App\Contracts\BlogCategoryContract;
 use App\Contracts\BlogContract;
 use App\Contracts\ContactDetailContract;
 use App\Contracts\ContactContract;
+use App\Contracts\SliderContract;
 
 // REPOSITORY
 use App\Repositories\AboutRepository;
@@ -17,6 +18,7 @@ use App\Repositories\BlogCategoryRepository;
 use App\Repositories\BlogRepository;
 use App\Repositories\ContactDetailRepository;
 use App\Repositories\ContactRepository;
+use App\Repositories\SliderRepository;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -29,6 +31,7 @@ class RepositoryServiceProvider extends ServiceProvider
         BlogContract::class => BlogRepository::class,
         ContactDetailContract::class => ContactDetailRepository::class,
         ContactContract::class => ContactRepository::class,
+        SliderContract::class => SliderRepository::class,
     ];
 
     /**
