@@ -10,6 +10,7 @@ use App\Contracts\BlogContract;
 use App\Contracts\ContactDetailContract;
 use App\Contracts\ContactContract;
 use App\Contracts\SliderContract;
+use App\Contracts\MultiImageContract;
 
 // REPOSITORY
 use App\Repositories\AboutRepository;
@@ -19,6 +20,7 @@ use App\Repositories\BlogRepository;
 use App\Repositories\ContactDetailRepository;
 use App\Repositories\ContactRepository;
 use App\Repositories\SliderRepository;
+use App\Repositories\MultiImageRepository;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -32,6 +34,7 @@ class RepositoryServiceProvider extends ServiceProvider
         ContactDetailContract::class => ContactDetailRepository::class,
         ContactContract::class => ContactRepository::class,
         SliderContract::class => SliderRepository::class,
+        MultiImageContract::class => MultiImageRepository::class,
     ];
 
     /**

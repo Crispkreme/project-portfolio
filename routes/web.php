@@ -31,7 +31,7 @@ Route::controller(AboutController::class)->group(function () {
     Route::get('/about/page', 'AboutPage')->name('about.page');
     Route::post('/update/about', 'UpdateAbout')->name('update.about');
     Route::get('/about/multi/image', 'AboutMultiImage')->name('about.multi.image');
-    Route::post('/store/multi/image', 'StoreMultiImage')->name('store.multi.image');
+    // Route::post('/store/multi/image', 'StoreMultiImage')->name('store.multi.image');
     Route::get('/all/multi/image', 'AllMultiImage')->name('all.multi.image');
     Route::get('/edit/multi/image/{id}', 'EditMultiImage')->name('edit.multi.image');
     Route::post('/update/multi/image', 'UpdateMultiImage')->name('update.multi.image');
@@ -120,6 +120,19 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('/home/slider/store', 'storeSlider')->name('store.slider');
     Route::get('/home/slider/edit/{id}', 'editSlider')->name('edit.slider');
     Route::post('/home/slider/update/{id}', 'updateSlider')->name('update.slider');
+
+    // ABOUT ME FUNCTIONALITY
+    Route::get('/home/about', 'about')->name('about');
+    Route::get('/home/about/create', 'createAbout')->name('create.about');
+    Route::post('/home/about/store', 'storeAbout')->name('store.about');
+    Route::get('/home/about/edit/{id}', 'editAbout')->name('edit.about');
+
+    // MULTI-IMAGE FUNCTIONALITY
+    Route::get('/home/multi/image', 'multiImage')->name('multi.image');
+    Route::get('/home/multi/image/create', 'createMultiImage')->name('create.multi.image');
+    Route::post('/home/multi/image/store', 'storeMultiImage')->name('store.multi.image');
+    Route::get('/home/multi/image/edit/{id}', 'editMultiImage')->name('edit.multi.image');
+    Route::post('/home/multi/image/update/{id}', 'updateMultiImage')->name('update.multi.image');
 });
 
 

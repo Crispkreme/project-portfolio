@@ -17,18 +17,18 @@
                         <span>Portfolio Slider</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('create.slider') }}">Add Slider</a></li>
                         <li><a href="{{ route('slider') }}">List Slider</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-mail-send-line"></i>
-                        <span>About Page Setup</span>
+                        <i class="ri-fingerprint-2-line"></i>
+                        <span>About Me</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('about.page') }}">About Page</a></li>
-                        <li><a href="{{ route('about.multi.image') }}">About Multi Image</a></li>
-                        <li><a href="{{ route('all.multi.image') }}">All Multi Image</a></li>
+                        <li><a href="{{ route('about') }}">List About</a></li>
+                        <li><a href="{{ route('multi.image') }}">List Multi Image</a></li>
                     </ul>
                 </li>
                 <li>

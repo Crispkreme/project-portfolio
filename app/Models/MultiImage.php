@@ -10,7 +10,12 @@ class MultiImage extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'multi_image',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
  

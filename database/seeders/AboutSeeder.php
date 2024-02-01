@@ -14,6 +14,7 @@ class AboutSeeder extends Seeder
     public function run(): void
     {
         About::create([
+            'user_id' => 1,
             'title' => 'About Title',
             'short_title' => 'About Short Title',
             'short_description' => 'About Short Description',

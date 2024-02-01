@@ -9,4 +9,5 @@ interface SliderContract {
     public function updateActiveStatusSlider($isActive, $id);
     public function getSliderByUser($userId);
     public function findSlider($id);
+    public function updateSlider($id, $messageParams);
 }
