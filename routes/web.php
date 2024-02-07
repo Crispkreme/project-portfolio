@@ -133,6 +133,12 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('/home/multi/image/store', 'storeMultiImage')->name('store.multi.image');
     Route::get('/home/multi/image/edit/{id}', 'editMultiImage')->name('edit.multi.image');
     Route::post('/home/multi/image/update/{id}', 'updateMultiImage')->name('update.multi.image');
+
+    // PORTFOLIO FUNCTIONALITY
+    Route::get('/home/portfolio', 'portfolio')->name('portfolio');
+    Route::get('/home/portfolio/create', 'createPortfolio')->name('create.portfolio');
+    Route::get('/home/portfolio/edit/{id}', 'editPortfolio')->name('edit.portfolio');
+    Route::get('/home/portfolio/update/{id}', 'updatePortfolio')->name('update.portfolio');
 });
 
 

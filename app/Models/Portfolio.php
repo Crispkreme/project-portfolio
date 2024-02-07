@@ -10,16 +10,20 @@ class Portfolio extends Model
     use HasFactory;
 
     protected $fillable = [
-        'portfolio_type_id',
-        'portfolio_name',
-        'portfolio_title',
-        'portfolio_image',
-        'portfolio_description',
-        'portfolio_url',
+        'user_id',
+        'category_id',
+        'title',
+        'sub_title',
+        'screenshot',
+        'description',
+        'url',
     ];
 
-    public function portfolio_type() {
-        return $this->belongsTo(PortfolioType::class, 'portfolio_type_id');
+    public function category() {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
  

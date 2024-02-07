@@ -14,8 +14,10 @@ class PortfolioRepository implements PortfolioContract {
         $this->model = $model;
     }
 
-    public function getPortfolio()
+    public function getPortfolio($id)
     {
-        return $this->model->latest()->get();
+        return $this->model
+        ->where('user_id', $id)
+        ->get();
     }
 }

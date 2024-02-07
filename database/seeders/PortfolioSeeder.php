@@ -14,13 +14,13 @@ class PortfolioSeeder extends Seeder
     public function run(): void
     {
         Portfolio::create([
-            'portfolio_type_id' => 1,
-            'portfolio_name' => 'Laravel App',
-            'portfolio_title' => 'Laravel Title',
-            'portfolio_image' => '',
-            'portfolio_description' => 'Laravel Description',
-            'portfolio_url' => '',
+            'user_id' => 1,
+            'category_id' => 1,
+            'title' => 'Laravel App',
+            'sub_title' => 'Laravel Title',
+            'screenshot' => '',
+            'description' => 'Laravel Description',
+            'url' => '',
         ]);
-
     }
 }

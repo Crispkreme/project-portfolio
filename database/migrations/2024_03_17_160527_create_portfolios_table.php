@@ -15,16 +15,21 @@ return new class extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('portfolio_type_id');
-            $table->string('portfolio_name')->nullable();
-            $table->string('portfolio_title')->nullable();
-            $table->string('portfolio_image')->nullable();
-            $table->text('portfolio_description')->nullable();
-            $table->text('portfolio_url')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
+            $table->string('title')->nullable();
+            $table->string('sub_title')->nullable();
+            $table->string('screenshot')->nullable();
+            $table->text('description')->nullable();
+            $table->text('url')->nullable();
 
-            $table->foreign('portfolio_type_id')
+            $table->foreign('user_id')
                   ->references('id')
-                  ->on('portfolio_types')
+                  ->on('users')
+                  ->onDelete('cascade');
+            $table->foreign('category_id')
+                  ->references('id')
+                  ->on('categories')
                   ->onDelete('cascade');
 
             $table->timestamps();

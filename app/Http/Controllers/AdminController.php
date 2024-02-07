@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contracts\AboutContract;
 use App\Contracts\MultiImageContract;
+use App\Contracts\PortfolioContract;
+
 use App\Contracts\SliderContract;
 
 use App\Models\Slider;
@@ -11,7 +13,6 @@ use App\Models\Slider;
 use App\Models\User;
 
 use Exception;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -27,15 +28,18 @@ class AdminController extends Controller
     protected $sliderContract;
     protected $aboutContract;
     protected $multiImageContract;
+    protected $portfolioContract;
 
     public function __construct(
         SliderContract $sliderContract,
         AboutContract $aboutContract,
         MultiImageContract $multiImageContract,
+        PortfolioContract $portfolioContract,
     ) {
         $this->sliderContract = $sliderContract;
         $this->aboutContract = $aboutContract;
         $this->multiImageContract = $multiImageContract;
+        $this->portfolioContract = $portfolioContract;
     }
 
     public function destroy(Request $request)
@@ -746,6 +750,57 @@ class AdminController extends Controller
 
             return back()->with($notification);
         }
+    }
+
+    // PORTFOLIO FUNCTIONALITY
+    public function portfolio()
+    {
+        try {
+
+            $userId = Auth::user()->id;
+            $portfolios = $this->portfolioContract->getPortfolio($userId);
+
+            return view('home.portfolio.index', [
+                'portfolios' => $portfolios,
+            ]);
+
+        } catch (Exception $e) {
+
+            Log::error('Error in index: ' . $e->getMessage());
+
+            $notification = [
+                'message' => 'An error occurred while loading the index.',
+                'alert-type' => 'error',
+            ];
+
+            return redirect()->back()->with($notification);
+        }
+    }
+    public function createPortfolio()
+    {
+        try {
+
+            return view('home.portfolio.create');
+
+        } catch (Exception $e) {
+
+            Log::error('Error in index: ' . $e->getMessage());
+
+            $notification = [
+                'message' => 'An error occurred while loading the index.',
+                'alert-type' => 'error',
+            ];
+
+            return redirect()->back()->with($notification);
+        }
+    }
+    public function editPortfolio($id)
+    {
+        
+    }
+    public function updatePortfolio($id)
+    {
+        
     }
 }
  

@@ -4,5 +4,5 @@ namespace App\Contracts;
 
 interface PortfolioContract {
 
-    public function getPortfolio();
+    public function getPortfolio($id);
 }

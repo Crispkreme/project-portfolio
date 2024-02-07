@@ -34,10 +34,10 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
-                        <span>Portfolio Page Setup</span>
+                        <span>Portfolio</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('all.portfolio') }}">All Portfolio</a></li>
+                        <li><a href="{{ route('portfolio') }}">List Portfolio</a></li>
                         <li><a href="{{ route('add.portfolio') }}">Add Portfolio</a></li>
 
                     </ul>
