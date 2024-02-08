@@ -27,19 +27,18 @@
                         <span>About Me</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('create.about') }}">Add About</a></li>
                         <li><a href="{{ route('about') }}">List About</a></li>
-                        <li><a href="{{ route('multi.image') }}">List Multi Image</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-mail-send-line"></i>
+                        <i class="ri-profile-line"></i>
                         <span>Portfolio</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('create.portfolio') }}">Add Portfolio</a></li>
                         <li><a href="{{ route('portfolio') }}">List Portfolio</a></li>
-                        <li><a href="{{ route('add.portfolio') }}">Add Portfolio</a></li>
-
                     </ul>
                 </li>
                 <li class="menu-title">Pages</li>

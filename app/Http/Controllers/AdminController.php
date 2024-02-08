@@ -2,16 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\AboutContract;
-use App\Contracts\MultiImageContract;
-use App\Contracts\PortfolioContract;
-
-use App\Contracts\SliderContract;
-
-use App\Models\Slider;
-
-use App\Models\User;
-
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,23 +13,38 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
+use App\Contracts\AboutContract;
+use App\Contracts\MultiImageContract;
+use App\Contracts\PortfolioContract;
+use App\Contracts\CategoryContract;
+
+use App\Contracts\SliderContract;
+
+use App\Models\About;
+use App\Models\Portfolio;
+use App\Models\Slider;
+use App\Models\User;
+
 class AdminController extends Controller
 {
     protected $sliderContract;
     protected $aboutContract;
     protected $multiImageContract;
     protected $portfolioContract;
+    protected $categoryContract;
 
     public function __construct(
         SliderContract $sliderContract,
         AboutContract $aboutContract,
         MultiImageContract $multiImageContract,
         PortfolioContract $portfolioContract,
+        CategoryContract $categoryContract,
     ) {
         $this->sliderContract = $sliderContract;
         $this->aboutContract = $aboutContract;
         $this->multiImageContract = $multiImageContract;
         $this->portfolioContract = $portfolioContract;
+        $this->categoryContract = $categoryContract;
     }
 
     public function destroy(Request $request)
@@ -141,7 +146,6 @@ class AdminController extends Controller
             return redirect()->back()->with($notification);
         }
     }
-
     public function slider()
     {
         try {
@@ -510,26 +514,21 @@ class AdminController extends Controller
         DB::beginTransaction();
 
         try {
-
-            $userId = Auth::user()->id;
+            $userId = Auth::id();
 
             $params = $request->validate([
                 'user_id' => 'nullable|integer|max:255',
                 'title' => 'nullable|string|max:255',
                 'short_title' => 'nullable|string|max:255',
-                'short_description' => 'nullable',
-                'long_description' => 'nullable',
-                'about_image' => 'nullable|file',
+                'short_description' => 'nullable|string',
+                'long_description' => 'nullable|string',
+                'about_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'multi_image.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
 
-            if ($request->has('about_image')) {
-                $imageData = base64_decode($params['about_image']);
-                $imageExtension = File::extension($request->file('about_image')->getClientOriginalName());
-                $imageName = Str::random(20) . '.' . $imageExtension;
-                Storage::disk('public')->put('upload/about/' . $imageName, $imageData);
-                $imagePath = 'upload/about/' . $imageName;
-            } else {
-                $imagePath = null;
+            $aboutImage = null;
+            if ($request->hasFile('about_image')) {
+                $aboutImage = $request->file('about_image')->store('public/upload/about');
             }
 
             $messageParams = [
@@ -538,10 +537,29 @@ class AdminController extends Controller
                 'short_title' => $params['short_title'],
                 'short_description' => $params['short_description'],
                 'long_description' => $params['long_description'],
-                'about_image' => $imagePath,
+                'about_image' => $aboutImage,
             ];
 
-            $this->aboutContract->storeAbout($messageParams);
+            $about = $this->aboutContract->storeAbout($messageParams);
+            $aboutId = $about->id;
+
+            if ($request->hasFile('multi_image')) {
+                foreach ($request->file('multi_image') as $image) {
+                    $imagePath = $image->store('public/upload/multi-image'); 
+
+                    $multiImageParams = [
+                        'user_id' => $userId,
+                        'multi_image' => $imagePath,
+                    ];
+
+                    $multiImage = $this->multiImageContract->storeMultiImage($multiImageParams); 
+                    $multiImageId = $multiImage->id;
+
+                    $about = About::find($aboutId);
+                    $about->multi_images()->attach($multiImageId);
+
+                }
+            }
 
             DB::commit();
 
@@ -555,8 +573,7 @@ class AdminController extends Controller
         } catch (Exception $e) {
 
             DB::rollback();
-
-            Log::error('Error in storeSlider: ' . $e->getMessage());
+            Log::error('Error in storeAbout: ' . $e->getMessage());
 
             $notification = [
                 'alert-type' => 'danger',
@@ -779,8 +796,11 @@ class AdminController extends Controller
     public function createPortfolio()
     {
         try {
+            $categories = $this->categoryContract->getCategory('category', 'ASC');
 
-            return view('home.portfolio.create');
+            return view('home.portfolio.create',[
+                'categories' => $categories,
+            ]);
 
         } catch (Exception $e) {
 
@@ -792,6 +812,91 @@ class AdminController extends Controller
             ];
 
             return redirect()->back()->with($notification);
+        }
+    }
+    public function storePortfolio(Request $request)
+    {
+        DB::beginTransaction();
+
+        try {
+            $userId = Auth::id();
+
+            $params = $request->validate([
+                'user_id' => 'nullable|integer|max:255',
+                'category_id' => 'nullable|integer|max:255',
+                'title' => 'nullable|string|max:255',
+                'sub_title' => 'nullable|string|max:255',
+                'url' => 'nullable|url',
+                'description' => 'nullable|string',
+                'screenshot' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'multi_image.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+
+            $sanitizedUrl = null;
+            if (!empty($params['url'])) {
+                $sanitizedUrl = Str::of($params['url'])->trim()->lower()->ascii();
+                if (!filter_var($sanitizedUrl, FILTER_VALIDATE_URL)) {
+                    throw new \Exception('The url must be a valid URL.');
+                }
+            }
+
+            $screenshotImage = null;
+            if ($request->hasFile('screenshot')) {
+                $screenshotImage = $request->file('screenshot')->store('public/upload/portfolio');
+            }
+
+            $messageParams = [
+                'user_id' => $userId,
+                'category_id' => $params['category_id'],
+                'title' => $params['title'],
+                'sub_title' => $params['sub_title'],
+                'url' => $sanitizedUrl,
+                'description' => $params['description'],
+                'screenshot' => $screenshotImage,
+            ];
+
+            $portfolio = $this->portfolioContract->storePortfolio($messageParams);
+            $portfolioId = $portfolio->id;
+
+            if ($request->hasFile('multi_image')) {
+                foreach ($request->file('multi_image') as $image) {
+                    $imagePath = $image->store('public/upload/multi-image');
+
+                    $multiImageParams = [
+                        'user_id' => $userId,
+                        'multi_image' => $imagePath,
+                    ];
+
+                    $multiImage = $this->multiImageContract->storeMultiImage($multiImageParams);
+                    $multiImageId = $multiImage->id;
+
+                    // Attach multi-images to the portfolio
+                    $portfolio = Portfolio::find($portfolioId);
+                    $portfolio->multi_images()->attach($multiImageId);
+                }
+            }
+
+            DB::commit();
+
+            $notification = [
+                'alert-type' => 'success',
+                'message' => 'Portfolio successfully added!',
+            ];
+
+            return redirect()->route('index')->with($notification);
+
+        } catch (Exception $e) {
+            dd($e);
+            
+            DB::rollback();
+            Log::error('Error in storePortfolio: ' . $e->getMessage());
+
+            $notification = [
+                'alert-type' => 'danger',
+                'message' => 'Error occurred: ' . $e->getMessage(),
+            ];
+
+            return back()->with($notification);
         }
     }
     public function editPortfolio($id)

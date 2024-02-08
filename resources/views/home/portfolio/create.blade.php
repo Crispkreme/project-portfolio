@@ -7,17 +7,17 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title" style="margin-bottom: 2%;margin-top: 2%;">Portfolio </h4>
+                            <h4 class="card-title" style="margin-bottom: 2%;margin-top: 2%;">Add Portfolio </h4>
 
-                            <form method="post" action="{{ route('store.protfolio') }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('store.portfolio') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Name</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
-                                        <input name="portfolio_name" class="form-control" type="text"
+                                        <input name="title" class="form-control" type="text"
                                             id="example-text-input">
-                                        @error('portfolio_name')
+                                        @error('title')
                                             <span class="text-danger"> {{ $message }} </span>
                                         @enderror
                                     </div>
@@ -25,12 +25,12 @@
                                 <!-- end row -->
 
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Title </label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Sub Title </label>
                                     <div class="col-sm-10">
-                                        <input name="portfolio_title" class="form-control" type="text"
+                                        <input name="sub_title" class="form-control" type="text"
                                             id="example-text-input">
 
-                                        @error('portfolio_title')
+                                        @error('sub_title')
                                             <span class="text-danger"> {{ $message }} </span>
                                         @enderror
                                     </div>
@@ -38,22 +38,64 @@
                                 <!-- end row -->
 
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Description
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Category </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control select2">
+                                            <option selected disabled>Select Category</option>
+                                            <optgroup label="Category">
+                                                @if (empty($categories))
+                                                    <option value="" disabled>No data found</option>
+                                                @else
+                                                    @foreach ($categories as $key => $item)
+                                                        <option value="{{ $key }}">{{ $item->category }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </optgroup>
+                                        </select>
+                                        @error('category_id')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- end row -->
+
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">URL </label>
+                                    <div class="col-sm-10">
+                                        <input name="url" class="form-control" type="text"
+                                            id="example-text-input">
+
+                                        @error('url')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- end row -->
+
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Description
                                     </label>
                                     <div class="col-sm-10">
-                                        <textarea id="elm1" name="portfolio_description"></textarea>
+                                        <textarea id="elm1" name="description"></textarea>
                                     </div>
                                 </div>
                                 <!-- end row -->
 
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Image </label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Screenshots </label>
                                     <div class="col-sm-10">
-                                        <input name="portfolio_image" class="form-control" type="file" id="image">
+                                        <input name="multi_image[]" class="form-control" type="file" id="multi_image" multiple="">
                                     </div>
                                 </div>
                                 <!-- end row -->
 
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Portfolio Image </label>
+                                    <div class="col-sm-10">
+                                        <input name="screenshot" class="form-control" type="file" id="image">
+                                    </div>
+                                </div>
+                                <!-- end row -->
 
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label"> </label>

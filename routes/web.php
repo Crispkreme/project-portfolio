@@ -137,6 +137,7 @@ Route::controller(AdminController::class)->group(function () {
     // PORTFOLIO FUNCTIONALITY
     Route::get('/home/portfolio', 'portfolio')->name('portfolio');
     Route::get('/home/portfolio/create', 'createPortfolio')->name('create.portfolio');
+    Route::post('/home/portfolio/store', 'storePortfolio')->name('store.portfolio');
     Route::get('/home/portfolio/edit/{id}', 'editPortfolio')->name('edit.portfolio');
     Route::get('/home/portfolio/update/{id}', 'updatePortfolio')->name('update.portfolio');
 });

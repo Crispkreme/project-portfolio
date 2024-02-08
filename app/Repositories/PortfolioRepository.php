@@ -20,4 +20,9 @@ class PortfolioRepository implements PortfolioContract {
         ->where('user_id', $id)
         ->get();
     }
+
+    public function storePortfolio($params)
+    {
+        return $this->model->create($params);
+    }
 }

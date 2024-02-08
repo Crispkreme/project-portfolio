@@ -17,5 +17,20 @@ class MultiImage extends Model
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function blogs()
+    {
+        return $this->belongsToMany(Blog::class);
+    }
+
+    public function abouts()
+    {
+        return $this->belongsToMany(About::class);
+    }
+
+    public function portfolios()
+    {
+        return $this->belongsToMany(Portfolio::class);
+    }
 }
  

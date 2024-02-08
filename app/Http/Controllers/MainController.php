@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\AboutContract;
-use App\Contracts\BlogCategoryContract;
+use App\Contracts\CategoryContract;
 use App\Contracts\BlogContract;
 use App\Contracts\ContactDetailContract;
 use App\Contracts\PortfolioContract;
@@ -18,7 +18,7 @@ class MainController extends Controller
 {
     protected $aboutContract;
     protected $portfolioContract;
-    protected $blogCategoryContract;
+    protected $categoryContract;
     protected $blogContract;
     protected $contactDetailContract;
     protected $contactContract;
@@ -26,14 +26,14 @@ class MainController extends Controller
     public function __construct(
         AboutContract $aboutContract,
         PortfolioContract $portfolioContract,
-        BlogCategoryContract $blogCategoryContract,
+        CategoryContract $categoryContract,
         BlogContract $blogContract,
         ContactDetailContract $contactDetailContract,
         ContactContract $contactContract,
     ) {
         $this->aboutContract = $aboutContract;
         $this->portfolioContract = $portfolioContract;
-        $this->blogCategoryContract = $blogCategoryContract;
+        $this->categoryContract = $categoryContract;
         $this->blogContract = $blogContract;
         $this->contactDetailContract = $contactDetailContract;
         $this->contactContract = $contactContract;
@@ -139,7 +139,7 @@ class MainController extends Controller
     {
         try {
 
-            $categories = $this->blogCategoryContract->getBlogCategory('blog_category', 'ASC');
+            $categories = $this->categoryContract->getCategory('blog_category', 'ASC');
             $details = $this->contactDetailContract->getContactDetailByUserId(1);
             $allblogs = $this->blogContract->getBlog(3);
 

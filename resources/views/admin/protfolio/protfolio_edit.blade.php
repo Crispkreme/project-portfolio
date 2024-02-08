@@ -43,7 +43,7 @@
  
 
             <div class="row mb-3">
-                <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Description </label>
+                <label for="example-text-input" class="col-sm-2 col-form-label">Portfolio Description </label>
                 <div class="col-sm-10">
       <textarea id="elm1" name="portfolio_description">
       {{ $portfolio->portfolio_description }}
@@ -53,7 +53,7 @@
             <!-- end row -->
 
              <div class="row mb-3">
-                <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Image </label>
+                <label for="example-text-input" class="col-sm-2 col-form-label">Portfolio Image </label>
                 <div class="col-sm-10">
            <input name="portfolio_image" class="form-control" type="file" id="image">
                 </div>

@@ -46,6 +46,14 @@
                                 <!-- end row -->
 
                                 <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Screenshots </label>
+                                    <div class="col-sm-10">
+                                        <input name="multi_image[]" class="form-control" type="file" id="multi_image" multiple="">
+                                    </div>
+                                </div>
+                                <!-- end row -->
+
+                                <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">About Image </label>
                                     <div class="col-sm-10">
                                         <input name="about_image" class="form-control" type="file" id="image">
