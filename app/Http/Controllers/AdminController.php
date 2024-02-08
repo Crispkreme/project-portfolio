@@ -571,7 +571,7 @@ class AdminController extends Controller
             return redirect()->route('index')->with($notification);
 
         } catch (Exception $e) {
-
+            dd($e);
             DB::rollback();
             Log::error('Error in storeAbout: ' . $e->getMessage());
 
@@ -860,7 +860,7 @@ class AdminController extends Controller
 
             if ($request->hasFile('multi_image')) {
                 foreach ($request->file('multi_image') as $image) {
-                    $imagePath = $image->store('public/upload/multi-image');
+                    $imagePath = $image->store('public/upload/portfolio');
 
                     $multiImageParams = [
                         'user_id' => $userId,
@@ -870,7 +870,6 @@ class AdminController extends Controller
                     $multiImage = $this->multiImageContract->storeMultiImage($multiImageParams);
                     $multiImageId = $multiImage->id;
 
-                    // Attach multi-images to the portfolio
                     $portfolio = Portfolio::find($portfolioId);
                     $portfolio->multi_images()->attach($multiImageId);
                 }

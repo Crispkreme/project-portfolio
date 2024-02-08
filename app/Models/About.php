@@ -24,6 +24,11 @@ class About extends Model
 
     public function multi_images()
     {
-        return $this->belongsToMany(MultiImage::class);
+        return $this->belongsToMany(
+            MultiImage::class, 
+            'about_multi_images', 
+            'about_id', 
+            'multi_image_id'
+        );
     }
 }

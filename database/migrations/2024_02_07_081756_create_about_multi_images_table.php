@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blog_multi_image', function (Blueprint $table) {
+        Schema::create('about_multi_images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('blog_id');
+            $table->unsignedBigInteger('about_id');
             $table->unsignedBigInteger('multi_image_id');
             $table->timestamps();
 
-            $table->foreign('blog_id')
+            $table->foreign('about_id')
                 ->references('id')
-                ->on('blogs')
+                ->on('abouts')
                 ->onDelete('cascade');
             $table->foreign('multi_image_id')
                 ->references('id')
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('blog_multi_image');
+        Schema::dropIfExists('about_multi_image');
     }
 };

@@ -72,7 +72,7 @@
                                 <!-- end row -->
 
                                 <button type="submit" class="btn btn-info waves-effect waves-light">
-                                    <i class="ri-add-circle-line align-middle"></i> Add About
+                                    <i class="ri-add-circle-line align-middle"></i> About Data
                                 </button>
                             </form>
                         </div>

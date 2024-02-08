@@ -11,21 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('portfolio_multi_image', function (Blueprint $table) {
+        Schema::create('portfolio_multi_images', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('portfolio_id');
             $table->unsignedBigInteger('multi_image_id');
-            $table->timestamps();
-
+        
             $table->foreign('portfolio_id')
                 ->references('id')
                 ->on('portfolios')
                 ->onDelete('cascade');
+        
             $table->foreign('multi_image_id')
                 ->references('id')
                 ->on('multi_images')
                 ->onDelete('cascade');
+
+            $table->timestamps();
         });
+        
     }
 
     /**

@@ -14,23 +14,39 @@ class MultiImage extends Model
         'multi_image',
     ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 
     public function blogs()
     {
-        return $this->belongsToMany(Blog::class);
+        return $this->belongsToMany(
+            Blog::class,
+            'blog_multi_images', 
+            'multi_image_id', 
+            'blog_id'
+        );
     }
 
     public function abouts()
     {
-        return $this->belongsToMany(About::class);
+        return $this->belongsToMany(
+            About::class, 
+            'about_multi_images', 
+            'multi_image_id', 
+            'about_id'
+        );
     }
 
     public function portfolios()
     {
-        return $this->belongsToMany(Portfolio::class);
+        return $this->belongsToMany(
+            Portfolio::class, 
+            'portfolio_multi_images', 
+            'multi_image_id', 
+            'portfolio_id'
+        );
     }
 }
  

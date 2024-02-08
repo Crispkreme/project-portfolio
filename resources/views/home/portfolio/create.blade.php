@@ -40,14 +40,14 @@
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Category </label>
                                     <div class="col-sm-10">
-                                        <select class="form-control select2">
+                                        <select class="form-control select2" name="category_id">
                                             <option selected disabled>Select Category</option>
                                             <optgroup label="Category">
                                                 @if (empty($categories))
                                                     <option value="" disabled>No data found</option>
                                                 @else
                                                     @foreach ($categories as $key => $item)
-                                                        <option value="{{ $key }}">{{ $item->category }}</option>
+                                                        <option value="{{ $item->id }}">{{ $item->category }}</option>
                                                     @endforeach
                                                 @endif
                                             </optgroup>
@@ -105,8 +105,10 @@
                                     </div>
                                 </div>
                                 <!-- end row -->
-                                <input type="submit" class="btn btn-info waves-effect waves-light"
-                                    value="Insert Protfolio Data">
+
+                                <button type="submit" class="btn btn-info waves-effect waves-light">
+                                    <i class="ri-add-circle-line align-middle"></i> Portfolio Data
+                                </button>
                             </form>
                         </div>
                     </div>

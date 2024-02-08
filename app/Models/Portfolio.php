@@ -19,17 +19,24 @@ class Portfolio extends Model
         'url',
     ];
 
-    public function category() {
+    public function category()
+    {
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
-    
+
     public function multi_images()
     {
-        return $this->belongsToMany(MultiImage::class);
+        return $this->belongsToMany(
+            MultiImage::class, 
+            'portfolio_multi_images', 
+            'portfolio_id', 
+            'multi_image_id'
+        );
     }
 }
  

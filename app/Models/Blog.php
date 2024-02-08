@@ -18,12 +18,17 @@ class Blog extends Model
     ];
 
     public function category(){
-        return $this->belongsTo(BlogCategory::class,'blog_category_id','id');
+        return $this->belongsTo(Category::class,'category_id','id');
     }
 
     public function multi_images()
     {
-        return $this->belongsToMany(MultiImage::class);
+        return $this->belongsToMany(
+            MultiImage::class, 
+            'blog_multi_images', 
+            'blog_id', 
+            'multi_image_id'
+        );
     }
 }
  
