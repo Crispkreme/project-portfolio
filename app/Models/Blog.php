@@ -10,15 +10,29 @@ class Blog extends Model
     use HasFactory;
 
     protected $fillable = [
-        'blog_category',
-        'short_title',
-        'short_description',
-        'long_description',
-        'about_image',
+        'user_id',
+        'category_id',
+        'title',
+        'tags',
+        'description',
+        'screenshot',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(
+            User::class, 
+            'user_id',
+            'id'
+        );
+    }
+
     public function category(){
-        return $this->belongsTo(Category::class,'category_id','id');
+        return $this->belongsTo(
+            Category::class,
+            'category_id',
+            'id'
+        );
     }
 
     public function multi_images()

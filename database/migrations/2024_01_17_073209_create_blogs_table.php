@@ -15,15 +15,20 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('blog_category_id');
-            $table->string('blog_title')->nullable();
-            $table->string('blog_image')->nullable();
-            $table->string('blog_tags')->nullable();
-            $table->text('blog_description')->nullable(); 
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
+            $table->string('title')->nullable();
+            $table->string('tags')->nullable();
+            $table->text('description')->nullable(); 
+            $table->string('screenshot')->nullable();
 
-            $table->foreign('blog_category_id')
+            $table->foreign('user_id')
                   ->references('id')
-                  ->on('blog_categories')
+                  ->on('users')
+                  ->onDelete('cascade');
+            $table->foreign('category_id')
+                  ->references('id')
+                  ->on('categories')
                   ->onDelete('cascade');
 
             $table->timestamps();

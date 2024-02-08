@@ -140,6 +140,11 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('/home/portfolio/store', 'storePortfolio')->name('store.portfolio');
     Route::get('/home/portfolio/edit/{id}', 'editPortfolio')->name('edit.portfolio');
     Route::get('/home/portfolio/update/{id}', 'updatePortfolio')->name('update.portfolio');
+
+    // BLOG FUNCTIONALITY
+    Route::get('/home/blog', 'blog')->name('blog');
+    Route::get('/home/blog/create', 'createBlog')->name('create.blog');
+    Route::get('/home/blog/store', 'storeBlog')->name('store.blog');
 });
 
 

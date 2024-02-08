@@ -141,7 +141,7 @@ class MainController extends Controller
 
             $categories = $this->categoryContract->getCategory('blog_category', 'ASC');
             $details = $this->contactDetailContract->getContactDetailByUserId(1);
-            $allblogs = $this->blogContract->getBlog(3);
+            $allblogs = $this->blogContract->getLimitBlog(3);
 
             return view('blog',  [
                 'categories' => $categories,

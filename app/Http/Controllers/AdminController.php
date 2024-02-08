@@ -17,6 +17,7 @@ use App\Contracts\AboutContract;
 use App\Contracts\MultiImageContract;
 use App\Contracts\PortfolioContract;
 use App\Contracts\CategoryContract;
+use App\Contracts\BlogContract;
 
 use App\Contracts\SliderContract;
 
@@ -24,6 +25,7 @@ use App\Models\About;
 use App\Models\Portfolio;
 use App\Models\Slider;
 use App\Models\User;
+use App\Models\Blog;
 
 class AdminController extends Controller
 {
@@ -32,6 +34,7 @@ class AdminController extends Controller
     protected $multiImageContract;
     protected $portfolioContract;
     protected $categoryContract;
+    protected $blogContract;
 
     public function __construct(
         SliderContract $sliderContract,
@@ -39,12 +42,14 @@ class AdminController extends Controller
         MultiImageContract $multiImageContract,
         PortfolioContract $portfolioContract,
         CategoryContract $categoryContract,
+        BlogContract $blogContract,
     ) {
         $this->sliderContract = $sliderContract;
         $this->aboutContract = $aboutContract;
         $this->multiImageContract = $multiImageContract;
         $this->portfolioContract = $portfolioContract;
         $this->categoryContract = $categoryContract;
+        $this->blogContract = $blogContract;
     }
 
     public function destroy(Request $request)
@@ -900,9 +905,55 @@ class AdminController extends Controller
     }
     public function editPortfolio($id)
     {
-        
     }
     public function updatePortfolio($id)
+    {
+    }
+
+    // BLOG FUNCTIONALITY
+    public function blog()
+    {
+        try {
+            $blogs = $this->blogContract->getBlog();
+
+            return view('home.blog.index', [
+                'blogs' => $blogs,
+            ]);
+
+        } catch (Exception $e) {
+
+            Log::error('Error in blog: ' . $e->getMessage());
+
+            $notification = [
+                'message' => 'An error occurred while loading the blog.',
+                'alert-type' => 'error',
+            ];
+
+            return redirect()->back()->with($notification);
+        }
+    }
+    public function createBlog()
+    {
+        try {
+            $categories = $this->categoryContract->getCategory('category', 'ASC');
+
+            return view('home.blog.create', [
+                'categories' => $categories,
+            ]);
+
+        } catch (Exception $e) {
+
+            Log::error('Error in createBlog: ' . $e->getMessage());
+
+            $notification = [
+                'message' => 'An error occurred while loading the createBlog.',
+                'alert-type' => 'error',
+            ];
+
+            return redirect()->back()->with($notification);
+        }
+    }
+    public function storeBlog(Request $request)
     {
         
     }

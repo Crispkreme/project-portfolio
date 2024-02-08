@@ -14,10 +14,15 @@ class BlogRepository implements BlogContract {
         $this->model = $model;
     }
 
-    public function getBlog($paginate)
+    public function getLimitBlog($paginate)
     {
         return $this->model
         ->latest()
         ->paginate($paginate);
+    }
+
+    public function getBlog()
+    {
+        return $this->model->get();
     }
 }

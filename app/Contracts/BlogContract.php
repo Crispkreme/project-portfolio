@@ -4,5 +4,6 @@ namespace App\Contracts;
 
 interface BlogContract {
 
-    public function getBlog($paginate);
+    public function getLimitBlog($paginate);
+    public function getBlog();
 }
