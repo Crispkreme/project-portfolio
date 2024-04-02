@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Models\Slider;
 use App\Contracts\SliderContract;
+use App\Models\Slider;
 
 class SliderRepository implements SliderContract {
 
@@ -18,40 +18,30 @@ class SliderRepository implements SliderContract {
     {
         return $this->model->create($params);
     }
-    
-    public function getActiveSlider($isActive, $userId)
+
+    public function getSlider()
     {
-        return $this->model
-        ->where('user_id', $userId)
-        ->where('isActive', $isActive)
-        ->get();
+        return $this->model->get();
     }
 
-    public function updateActiveStatusSlider($isActive, $id)
+    public function getSliderById($id) 
+    {
+        return $this->model->findOrFail($id);
+    }
+
+    public function updateSlider($id, $params)
     {
         $slider = $this->model->findOrFail($id);
-        $slider->update([
-            'isActive' => $isActive,
-        ]);
+        $slider->update($params);
         return $slider;
     }
 
-    public function getSliderByUser($userId)
-    {
-        return $this->model
-        ->where('user_id', $userId)
-        ->get();
-    }
-
-    public function findSlider($id)
-    {
-        return $this->model->find($id);
-    }
-
-    public function updateSlider($id, $messageParams)
+    public function statusSlider($id, $params)
     {
         $slider = $this->model->findOrFail($id);
-        $slider->update($messageParams);
+        $slider->update([
+            'isActive' => $params,
+        ]);
         return $slider;
     }
 }

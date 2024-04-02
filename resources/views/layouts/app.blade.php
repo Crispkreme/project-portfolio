@@ -1,120 +1,105 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
 
-    <meta charset="utf-8" />
-    <title>Dashboard | Upcube - Admin & Dashboard Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <link href="{{ asset('css/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/app.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/bootstrap-tagsinput.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/toastr.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('assets/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/datatables.net-select-bs4/css//select.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/twitter-bootstrap-wizard/prettify.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/toastr/build/toastr.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/icons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/backend.min.css') }}">
 
     @stack('styles')
 
 </head>
 
+@if(Request::is('login'))
+<body class="auth-body-bg">
+@else
 <body data-topbar="dark">
+@endif
 
-    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+    {{ $slot }}
+    
+    <script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/metismenu/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('assets/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/node-waves/waves.min.js') }}"></script>
 
-    <!-- Begin page -->
-    <div id="layout-wrapper">
+    <script src="{{ asset('assets/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+    <script src="{{ asset('assets/twitter-bootstrap-wizard/prettify.js') }}"></script>
+    <script src="{{ asset('assets/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+    <script src="{{ asset('assets/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js') }}"></script>
+    <script src="{{ asset('assets/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
 
-        @include('admin.body.header')
+    <script src="{{ asset('assets/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/tinymce/tinymce.min.js') }}"></script>
 
-        <!-- ========== Left Sidebar Start ========== -->
-        @include('admin.body.sidebar')
-        <!-- Left Sidebar End -->
+    <script src="{{ asset('assets/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
-        
-        <div class="main-content">
+    <script src="{{ asset('assets/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('assets/toastr/build/toastr.min.js') }}"></script>
 
-            {{ $slot }}
-
-            @include('admin.body.footer')
-
-        </div>
-        <!-- end main content-->
-
-    </div>
-    <!-- END layout-wrapper -->
-
-    <!-- Right Sidebar -->
-
-    <!-- /Right-bar -->
-
-    <!-- Right bar overlay-->
-    <div class="rightbar-overlay"></div>
-
-    <!-- JAVASCRIPT -->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('js/simplebar.min.js') }}"></script>
-    <script src="{{ asset('js/waves.min.js') }}"></script>
-    <script src="{{ asset('js/select2.min.js') }}"></script>
-    <script src="{{ asset('js/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-jvectormap-1.2.2.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-jvectormap-us-merc-en.js') }}"></script>
-    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('js/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('js/dashboard.init.js') }}"></script>
-    <script src="{{ asset('js/datatables.init.js') }}"></script>
-    <script src="{{ asset('js/form-editor.init.js') }} "></script>
-    <script src="{{ asset('js/theme.min.js') }} "></script>
-    <script src="{{ asset('js/tinymce.min.js') }} "></script>
-    <script src="{{ asset('js/code.js') }}"></script>
-    <script src="{{ asset('js/validate.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-    @stack('scripts')
-
-    <!-- App js -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/toastr.min.js') }}"></script>
-
+    {{-- <script src="{{ asset('js/pages/dashboard.init.js') }}"></script> --}}
+    <script src="{{ asset('js/pages/form-wizard.init.js') }}"></script>
+    <script src="{{ asset('js/pages/form-advanced.init.js') }}"></script>
+    <script src="{{ asset('js/pages/form-editor.init.js') }}"></script>
+    <script src="{{ asset('js/pages/datatables.init.js') }}"></script>
+    
+    <script src="{{ asset('js/handlebars.js') }}"></script>
+    <script src="{{ asset('js/backend.js') }}"></script>
+    
     <script>
-        @if (Session::has('message'))
-            var type = "{{ Session::get('alert-type', 'info') }}"
-            switch (type) {
+        @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type','info') }}"
+            switch(type) {
                 case 'info':
                     toastr.info(" {{ Session::get('message') }} ");
                     break;
-
                 case 'success':
                     toastr.success(" {{ Session::get('message') }} ");
                     break;
-
                 case 'warning':
                     toastr.warning(" {{ Session::get('message') }} ");
                     break;
-
                 case 'error':
                     toastr.error(" {{ Session::get('message') }} ");
-                    break;
+                    break; 
             }
-        @endif
+        @endif 
     </script>
 
+    @stack('scripts')
+    
 </body>
-
 </html>

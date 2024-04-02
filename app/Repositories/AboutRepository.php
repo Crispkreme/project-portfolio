@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Models\About;
 use App\Contracts\AboutContract;
+use App\Models\About;
 
 class AboutRepository implements AboutContract {
 
@@ -14,20 +14,34 @@ class AboutRepository implements AboutContract {
         $this->model = $model;
     }
 
-    public function findAbout($id)
-    {
-        return $this->model->find($id);
-    }
-
-    public function getAboutByUser($id)
-    {
-        return $this->model
-        ->where('user_id', $id)
-        ->get();
-    }
-
     public function storeAbout($params)
     {
         return $this->model->create($params);
+    }
+
+    public function getAbout()
+    {
+        return $this->model->get();
+    }
+
+    public function getAboutById($id) 
+    {
+        return $this->model->findOrFail($id);
+    }
+
+    public function updateAbout($id, $params)
+    {
+        $about = $this->model->findOrFail($id);
+        $about->update($params);
+        return $about;
+    }
+
+    public function statusAbout($id, $params)
+    {
+        $about = $this->model->findOrFail($id);
+        $about->update([
+            'isActive' => $params,
+        ]);
+        return $about;
     }
 }

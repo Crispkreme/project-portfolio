@@ -2,39 +2,19 @@
 
 namespace App\Providers;
 
-// CONTRACTS
-use App\Contracts\AboutContract;
-use App\Contracts\PortfolioContract;
-use App\Contracts\CategoryContract;
-use App\Contracts\BlogContract;
-use App\Contracts\ContactDetailContract;
-use App\Contracts\ContactContract;
 use App\Contracts\SliderContract;
-use App\Contracts\MultiImageContract;
+use App\Contracts\AboutContract;
 
-// REPOSITORY
-use App\Repositories\AboutRepository;
-use App\Repositories\PortfolioRepository;
-use App\Repositories\CategoryRepository;
-use App\Repositories\BlogRepository;
-use App\Repositories\ContactDetailRepository;
-use App\Repositories\ContactRepository;
 use App\Repositories\SliderRepository;
-use App\Repositories\MultiImageRepository;
+use App\Repositories\AboutRepository;
 
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
     protected $repositories = [
-        AboutContract::class => AboutRepository::class,
-        PortfolioContract::class => PortfolioRepository::class,
-        CategoryContract::class => CategoryRepository::class,
-        BlogContract::class => BlogRepository::class,
-        ContactDetailContract::class => ContactDetailRepository::class,
-        ContactContract::class => ContactRepository::class,
         SliderContract::class => SliderRepository::class,
-        MultiImageContract::class => MultiImageRepository::class,
+        AboutContract::class => AboutRepository::class,
     ];
 
     /**
