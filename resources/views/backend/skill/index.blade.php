@@ -17,7 +17,7 @@
                 <div class="container-fluid">
 
                     @php
-                        $title = "Slider"; 
+                        $title = "Portfolio Skill"; 
                         $links = [
                             ['url' => '#', 'label' => 'Portfolio'], 
                             ['url' => '#', 'label' => 'Slider']
@@ -59,11 +59,11 @@
                                         <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
                                             <thead class="table-light">
                                                 <tr>
-                                                    <th>ID</th>
+                                                    <th class="text-center">ID</th>
                                                     <th>Skill</th>
                                                     <th>Type</th>
                                                     <th>Image</th>
-                                                    <th>Active</th>
+                                                    <th class="text-center">Active</th>
                                                     <th style="text-align: center;">Action</th>
                                                 </tr>
                                             </thead>
@@ -76,10 +76,10 @@
                                                         <td>{{ $item->skill_type }}</td>
                                                         <td>{{ $item->skill_image }}</td>
                                                         <td>
-                                                            <div class="d-flex flex-wrap gap-2">
+                                                            <div class="d-flex justify-content-center align-items-center gap-2">
                                                                 <input type="checkbox" id="switch1" switch="none" @if($item->isActive == 1) checked @endif>
                                                                 <label for="switch1" data-on-label="On" data-off-label="Off"></label>
-                                                            </div>
+                                                            </div>   
                                                         </td>                                                        
                                                         <td style="text-align: center;">
                                                             <button class="btn btn-info sm" 

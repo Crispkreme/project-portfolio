@@ -17,7 +17,7 @@
                 <div class="container-fluid">
 
                     @php
-                        $title = "Slider"; 
+                        $title = "Portfolio Experience"; 
                         $links = [
                             ['url' => '#', 'label' => 'Portfolio'], 
                             ['url' => '#', 'label' => 'Slider']
@@ -80,15 +80,15 @@
                                                         <td class="table-cell">{{ $item->job_description }}</td>
                                                         <td class="table-cell">{{ $item->skill->skill }}</td>
                                                         <td>
-                                                            <div class="d-flex flex-wrap gap-2 text-center">
+                                                            <div class="d-flex justify-content-center align-items-center gap-2">
                                                                 <input type="checkbox" id="switch1" switch="none" @if($item->isActive == 1) checked @endif>
                                                                 <label for="switch1" data-on-label="On" data-off-label="Off"></label>
-                                                            </div>
+                                                            </div>                                                            
                                                         </td>                                                        
                                                         <td style="text-align: center;">
                                                             <button class="btn btn-info sm" 
                                                                 data-bs-toggle="modal" 
-                                                                data-bs-target="#updateAboutModal-{{ $item->id }}" 
+                                                                data-bs-target="#updateExperienceModal-{{ $item->id }}" 
                                                                 title="Edit Data">
                                                                 <i class="fas fa-edit"></i>
                                                             </button>
@@ -99,7 +99,8 @@
                                                             </a>
                                                         </td>
                                                     </tr>
-                                                    @include('backend.modals.update-about-modals', ['item' => $item])
+
+                                                    @include('backend.modals.update-experience-modals', ['item' => $item])
 
                                                 @endforeach
                                                

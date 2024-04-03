@@ -17,7 +17,7 @@
                 <div class="container-fluid">
 
                     @php
-                        $title = "Slider"; 
+                        $title = "Portfolio Slider"; 
                         $links = [
                             ['url' => '#', 'label' => 'Portfolio'], 
                             ['url' => '#', 'label' => 'Slider']
@@ -79,10 +79,10 @@
                                                         <td>{{ $item->images }}</td>
                                                         <td>{{ $item->video_url }}</td>
                                                         <td>
-                                                            <div class="d-flex flex-wrap gap-2">
+                                                            <div class="d-flex justify-content-center align-items-center gap-2">
                                                                 <input type="checkbox" id="switch1" switch="none" @if($item->isActive == 1) checked @endif>
                                                                 <label for="switch1" data-on-label="On" data-off-label="Off"></label>
-                                                            </div>
+                                                            </div>   
                                                         </td>                                                        
                                                         <td style="text-align: center;">
                                                             <button class="btn btn-info sm" 

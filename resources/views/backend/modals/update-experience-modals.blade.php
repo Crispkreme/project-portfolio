@@ -1,17 +1,18 @@
-<div class="modal fade" id="createExperienceModal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+<div class="modal fade" id="updateExperienceModal-{{ $item->id }}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Experience</h5>
+                <h5 class="modal-title">Update Experience</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('admin.store.about') }}" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <form method="POST" action="{{ route('admin.update.experience', ['id' => $item->id]) }}" enctype="multipart/form-data" class="needs-validation" novalidate>
                     @csrf
+
                     <div class="row">
                         <div class="mb-3 position-relative">
                             <label for="company" class="form-label">Company</label>
-                            <input type="text" class="form-control @error('company') is-invalid @enderror" id="company" name="company" placeholder="Company" value="{{ old('title') }}" required>
+                            <input type="text" class="form-control @error('company') is-invalid @enderror" id="company" name="company" placeholder="Company" value="{{ $item->company }}" required>
                             <div class="invalid-feedback">
                                 @error('title')
                                     {{ $message }}
@@ -22,7 +23,7 @@
                     <div class="row">
                         <div class="mb-3 position-relative">
                             <label for="address" class="form-label">Address</label>
-                            <textarea id="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" name="address" rows="2" placeholder="Address"></textarea>
+                            <textarea id="address" class="form-control @error('address') is-invalid @enderror" value="{{ $item->address }}" name="address" rows="2" placeholder="Address"></textarea>
                             <div class="invalid-feedback">
                                 @error('address')
                                     {{ $message }}
@@ -33,7 +34,7 @@
                     <div class="row">
                         <div class="mb-3 position-relative">
                             <label for="position" class="form-label">Position</label>
-                            <input type="text" class="form-control @error('position') is-invalid @enderror" id="position" name="position" placeholder="Position" value="{{ old('position') }}" required>
+                            <input type="text" class="form-control @error('position') is-invalid @enderror" id="position" name="position" placeholder="Position" value="{{ $item->position }}" required>
                             <div class="invalid-feedback">
                                 @error('position')
                                     {{ $message }}
@@ -44,7 +45,7 @@
                     <div class="row">
                         <div class="mb-3 position-relative">
                             <label for="job_description" class="form-label">Job Description</label>
-                            <textarea id="job_description" placeholder="Job Description" class="form-control @error('job_description') is-invalid @enderror" value="{{ old('job_description') }}" name="job_description" rows="2"></textarea>
+                            <textarea id="job_description" placeholder="Job Description" class="form-control @error('job_description') is-invalid @enderror" value="{{ $item->job_description }}" name="job_description" rows="2"></textarea>
                             <div class="invalid-feedback">
                                 @error('job_description')
                                     {{ $message }}
@@ -78,18 +79,8 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fas fa-plus" style="margin-right: 10px;"></i>
-                            Add About
-                        </button>
-                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-@push('scripts')
-    <script src="{{ asset('js/jquery.inputmask.min.js') }}"></script>
-@endpush
