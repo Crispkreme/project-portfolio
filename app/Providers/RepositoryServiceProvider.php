@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Contracts\AboutContract;
+use App\Contracts\ExperienceContract;
 use App\Contracts\SkillContract;
 use App\Contracts\SliderContract;
 
 use App\Repositories\AboutRepository;
+use App\Repositories\ExperienceRepository;
 use App\Repositories\SkillRepository;
 use App\Repositories\SliderRepository;
 
@@ -18,6 +20,7 @@ class RepositoryServiceProvider extends ServiceProvider
         SliderContract::class => SliderRepository::class,
         AboutContract::class => AboutRepository::class,
         SkillContract::class => SkillRepository::class,
+        ExperienceContract::class => ExperienceRepository::class,
     ];
 
     /**

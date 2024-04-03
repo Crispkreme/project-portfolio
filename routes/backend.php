@@ -9,10 +9,12 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -47,6 +49,15 @@ Route::group([], function () {
     Route::post('/update/skill/{id}', [SkillController::class, 'updateSkill'])->name('update.skill');
     Route::post('/update/skill/active/{id}', [SkillController::class, 'activeSkill'])->name('update.active.skill');
     Route::post('/update/skill/inactive/{id}', [SkillController::class, 'inactiveSkill'])->name('update.inactive.skill');
+
+    // EXPERIENCE
+    Route::get('/create/experience', [ExperienceController::class, 'createExperience'])->name('create.experience');
+    Route::post('/store/experience', [ExperienceController::class, 'storeExperience'])->name('store.experience');
+    Route::get('/get/experience', [ExperienceController::class, 'getExperience'])->name('get.experience');
+    Route::get('/edit/experience/{id}', [ExperienceController::class, 'editExperience'])->name('edit.experience');
+    Route::post('/update/experience/{id}', [ExperienceController::class, 'updateExperience'])->name('update.experience');
+    Route::post('/update/experience/active/{id}', [ExperienceController::class, 'activeExperience'])->name('update.active.experience');
+    Route::post('/update/experience/inactive/{id}', [ExperienceController::class, 'inactiveExperience'])->name('update.inactive.experience');
 });
 
 Route::middleware('auth')->group(function () {
