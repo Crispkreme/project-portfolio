@@ -33,10 +33,10 @@
                                     type="button" 
                                     class="btn btn-primary waves-effect waves-light" 
                                     data-bs-toggle="modal" 
-                                    data-bs-target="#createSliderModal"
+                                    data-bs-target="#createSkillModal"
                                 >
                                     <i class="fas fa-plus" style="margin-right: 10px;"></i>
-                                    Add Slider
+                                    Add Skill
                                 </button>
                             </div>
                             <div class="card">
@@ -84,7 +84,7 @@
                                                         <td style="text-align: center;">
                                                             <button class="btn btn-info sm" 
                                                                 data-bs-toggle="modal" 
-                                                                data-bs-target="#updateSliderModal-{{ $item->id }}" 
+                                                                data-bs-target="#updateSkillModal-{{ $item->id }}" 
                                                                 title="Edit Data">
                                                                 <i class="fas fa-edit"></i>
                                                             </button>
@@ -96,7 +96,7 @@
                                                         </td>
                                                     </tr>
 
-                                                    @include('backend.modals.update-slider-modals', ['item' => $item])
+                                                    @include('backend.modals.update-skill-modals', ['item' => $item])
 
                                                 @endforeach
                                                
@@ -120,6 +120,6 @@
 
     <div class="rightbar-overlay"></div>
 
-    @include('backend.modals.create-slider-modals');
+    @include('backend.modals.create-skill-modals');
     
 </x-app-layout>

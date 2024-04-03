@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CreateSkillRequest extends FormRequest
+class UpdateSkillRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class CreateSkillRequest extends FormRequest
             'skill' => ['required', 'string', 'max:255'],
             'skill_type' => ['required', Rule::in(["1", "2"])],
             'skill_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
-        ];  
+        ];   
     }
 
     /**
