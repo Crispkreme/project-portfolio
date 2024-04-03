@@ -33,26 +33,25 @@
                                     type="button" 
                                     class="btn btn-primary waves-effect waves-light" 
                                     data-bs-toggle="modal" 
-                                    data-bs-target="#createAboutModal"
+                                    data-bs-target="#createSliderModal"
                                 >
                                     <i class="fas fa-plus" style="margin-right: 10px;"></i>
-                                    Add About
+                                    Add Slider
                                 </button>
                             </div>
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="dropdown float-end">
-                                        <a href="#" class="dropdown-toggle arrow-none card-drop"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
-                                            <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
-                                            <a href="javascript:void(0);" class="dropdown-item">Profit</a>
-                                            <a href="javascript:voidx(0);" class="dropdown-item">Action</a>
-                                        </div>
-                                    </div>
+                                    
+                                    @php
+                                        $links = [
+                                            ['url' => 'javascript:void(0);', 'label' => 'Sales Report'], 
+                                            ['url' => 'javascript:void(0);', 'label' => 'Export Report'], 
+                                            ['url' => 'javascript:void(0);', 'label' => 'Profit'], 
+                                            ['url' => 'javascript:void(0);', 'label' => 'Action'], 
+                                        ];
+                                    @endphp
+
+                                    <x-backend.table-dropdown :links="$links" />
 
                                     <h4 class="card-title mb-4">Latest Transactions</h4>
 
@@ -60,25 +59,24 @@
                                         <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
                                             <thead class="table-light">
                                                 <tr>
-                                                    <th class="text-center">ID</th>
-                                                    <th>Title</th>
-                                                    <th>Sub Title</th>
-                                                    <th>Description</th>
-                                                    <th>Content</th>
-                                                    <th class="text-center">Active</th>
+                                                    <th>ID</th>
+                                                    <th>Skill</th>
+                                                    <th>Type</th>
+                                                    <th>Image</th>
+                                                    <th>Active</th>
                                                     <th style="text-align: center;">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($abouts as $key => $item)
+
+                                                @foreach ($skills as $key => $item)
                                                     <tr>
                                                         <td class="text-center">{{ $key + 1 }}</td>
-                                                        <td class="table-cell">{{ $item->title }}</td>
-                                                        <td class="table-cell">{{ $item->subtitle }}</td>
-                                                        <td class="table-cell">{{ $item->description }}</td>
-                                                        <td class="table-cell">{{ $item->content }}</td>
+                                                        <td>{{ $item->skill }}</td>
+                                                        <td>{{ $item->skill_type }}</td>
+                                                        <td>{{ $item->skill_image }}</td>
                                                         <td>
-                                                            <div class="d-flex flex-wrap gap-2 text-center">
+                                                            <div class="d-flex flex-wrap gap-2">
                                                                 <input type="checkbox" id="switch1" switch="none" @if($item->isActive == 1) checked @endif>
                                                                 <label for="switch1" data-on-label="On" data-off-label="Off"></label>
                                                             </div>
@@ -86,7 +84,7 @@
                                                         <td style="text-align: center;">
                                                             <button class="btn btn-info sm" 
                                                                 data-bs-toggle="modal" 
-                                                                data-bs-target="#updateAboutModal-{{ $item->id }}" 
+                                                                data-bs-target="#updateSliderModal-{{ $item->id }}" 
                                                                 title="Edit Data">
                                                                 <i class="fas fa-edit"></i>
                                                             </button>
@@ -97,7 +95,8 @@
                                                             </a>
                                                         </td>
                                                     </tr>
-                                                    @include('backend.modals.update-about-modals', ['item' => $item])
+
+                                                    @include('backend.modals.update-slider-modals', ['item' => $item])
 
                                                 @endforeach
                                                
@@ -121,6 +120,6 @@
 
     <div class="rightbar-overlay"></div>
 
-    @include('backend.modals.create-about-modals');
+    @include('backend.modals.create-slider-modals');
     
 </x-app-layout>

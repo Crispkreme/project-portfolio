@@ -9,4 +9,5 @@ interface AboutContract {
     public function getAbout();
     public function getAboutById($id);
     public function statusAbout($id, $params);
+    public function getAboutByStatusId($statusId);
 }

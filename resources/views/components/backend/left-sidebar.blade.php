@@ -44,6 +44,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('admin.get.skill') }}" class=" waves-effect">
+                        <i class="mdi mdi-certificate"></i>
+                        <span>Skills</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
                         <span>Email</span>

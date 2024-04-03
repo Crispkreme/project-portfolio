@@ -19,7 +19,7 @@
 
         <x-frontend.banner />
 
-        <x-frontend.about />
+        <x-frontend.about :about="$about" />
 
         <x-frontend.service />
 

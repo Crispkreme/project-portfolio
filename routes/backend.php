@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -9,10 +10,10 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\SliderController;
-use App\Http\Controllers\AboutController
-;
 use Illuminate\Support\Facades\Route;
+
 
 
 Route::group([], function () {
@@ -37,6 +38,15 @@ Route::group([], function () {
     Route::post('/update/about/{id}', [AboutController::class, 'updateAbout'])->name('update.about');
     Route::post('/update/about/active/{id}', [AboutController::class, 'activeAbout'])->name('update.active.about');
     Route::post('/update/about/inactive/{id}', [AboutController::class, 'inactiveAbout'])->name('update.inactive.about');
+
+    // SKILL
+    Route::get('/create/skill', [SkillController::class, 'createSkill'])->name('create.skill');
+    Route::post('/store/skill', [SkillController::class, 'storeSkill'])->name('store.skill');
+    Route::get('/get/skill', [SkillController::class, 'getSkill'])->name('get.skill');
+    Route::get('/edit/skill/{id}', [SkillController::class, 'editSkill'])->name('edit.skill');
+    Route::post('/update/skill/{id}', [SkillController::class, 'updateSkill'])->name('update.skill');
+    Route::post('/update/skill/active/{id}', [SkillController::class, 'activeSkill'])->name('update.active.skill');
+    Route::post('/update/skill/inactive/{id}', [SkillController::class, 'inactiveSkill'])->name('update.inactive.skill');
 });
 
 Route::middleware('auth')->group(function () {

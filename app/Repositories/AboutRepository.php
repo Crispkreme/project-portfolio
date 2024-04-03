@@ -44,4 +44,9 @@ class AboutRepository implements AboutContract {
         ]);
         return $about;
     }
+
+    public function getAboutByStatusId($statusId)
+    {
+        return $this->model->where('isActive', 1)->first();
+    }
 }

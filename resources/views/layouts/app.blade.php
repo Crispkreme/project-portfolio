@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/backend.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     @stack('styles')
 
