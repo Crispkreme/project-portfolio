@@ -79,6 +79,10 @@
                             </div>
                         </div>
                     </div>
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-plus" style="margin-right: 10px;"></i>
+                        Update Experience
+                    </button>
                 </form>
             </div>
         </div>

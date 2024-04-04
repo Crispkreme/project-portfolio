@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{ asset('assets/datatables.net-select-bs4/css//select.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/twitter-bootstrap-wizard/prettify.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/toastr/build/toastr.min.css') }}">
 
@@ -59,7 +58,6 @@
     <script src="{{ asset('assets/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
 
-    <script src="{{ asset('assets/select2/js/select2.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('assets/tinymce/tinymce.min.js') }}"></script>
 
@@ -71,7 +69,7 @@
     <script src="{{ asset('assets/datatables.net-select/js/dataTables.select.min.js') }}"></script>
     <script src="{{ asset('assets/toastr/build/toastr.min.js') }}"></script>
 
-    {{-- <script src="{{ asset('js/pages/dashboard.init.js') }}"></script> --}}
+    <script src="{{ asset('js/pages/dashboard.init.js') }}"></script>
     <script src="{{ asset('js/pages/form-wizard.init.js') }}"></script>
     <script src="{{ asset('js/pages/form-advanced.init.js') }}"></script>
     <script src="{{ asset('js/pages/form-editor.init.js') }}"></script>

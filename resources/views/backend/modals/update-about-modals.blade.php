@@ -66,7 +66,7 @@
                     <div>
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-plus" style="margin-right: 10px;"></i>
-                            Update Slider
+                            Update About
                         </button>
                     </div>
                 </form>

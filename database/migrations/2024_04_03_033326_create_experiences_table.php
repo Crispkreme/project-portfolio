@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('isPresent')->default(0);
             $table->boolean('isActive')->default(0);
             $table->date('start_date');
-            $table->date('end_date');
+            $table->date('end_date')->nullable();
 
             $table->foreign('skill_id')
             ->references('id')

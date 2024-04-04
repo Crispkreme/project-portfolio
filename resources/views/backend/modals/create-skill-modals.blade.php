@@ -49,7 +49,7 @@
                     <div>
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-plus" style="margin-right: 10px;"></i>
-                            Add About
+                            Add Skill
                         </button>
                     </div>
                 </form>
